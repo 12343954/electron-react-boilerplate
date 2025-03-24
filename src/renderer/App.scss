@@ -1,0 +1,133 @@
+// Defining Default Theme Variables (Light theme)
+:root {
+  --body-background: linear-gradient(200.96deg, #fedc2a -29.09%, #dd5789 51.77%, #7a2c9e 129.35%);
+  --background-color: #ffffff;
+  --text-color: #ffffff;
+  --button-text-color: #000000;
+  --button-bg: #f0f0f0;
+  --button-border: #ccc;
+}
+
+$padding: 8px;
+$margin: 5px;
+$border-radius: 4px;
+
+html {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  color: var(--text-color);
+  height: 100vh;
+  background: var(--body-background);
+  font-family: sans-serif;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Hello {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+  color: var(--text-color);
+  transition: all ease-in 0.2s;
+}
+
+li {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+input,
+button {
+  padding: $padding;
+  margin: $margin 0;
+}
+
+input {
+  height: 1.5rem;
+  color: var(--button-text-color);
+  background-color: var(--button-bg);
+  width: 94%;
+  transition: all ease-in 0.1s;
+
+  &::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+button {
+  color: var(--button-text-color);
+  background-color: var(--button-bg);
+  border: 1px solid var(--button-border);
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  appearance: none;
+  font-size: 1.3rem;
+  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
+    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+  transition: all ease-in 0.1s;
+  cursor: pointer;
+  opacity: 0.9;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  &.language-switcher,
+  &.theme-switcher {
+    background-color: var(--button-bg);
+    border: 1px solid var(--button-border);
+    border-radius: $border-radius;
+  }
+
+
+}
+
+.lang {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 1rem;
+}
+
+.btn-theme {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1rem;
+}

@@ -1,0 +1,44 @@
+{
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Login"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{username}}!",
+    "logout": "Logout",
+    "language": "English"
+  },
+  "footer": {
+    "readDoc": "Read our docs",
+    "donate": "Donate"
+  },
+  "menu": {
+    "file": {
+      "label": "&File",
+      "open": "&Open",
+      "close": "&Close",
+      "exit": "Exit"
+    },
+    "edit": {
+      "label": "&Edit",
+      "undo": "Undo",
+      "copy": "Copy",
+      "paste": "Paste"
+    },
+    "view": {
+      "label": "&View",
+      "reload": "&Reload",
+      "toggleFullScreen": "Toggle &Full Screen",
+      "toggleDevTool": "Toggle &Developer Tools"
+    },
+    "help": {
+      "label": "Help",
+      "learnMore": "Learn More",
+      "documentation": "Documentation",
+      "communityDiscussions": "Community Discussions",
+      "searchIssues": "Search Issues"
+    }
+  }
+}

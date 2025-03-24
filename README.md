@@ -1,4 +1,10 @@
-<img src=".erb/img/erb-banner.svg" width="100%" />
+
+| Light | Dark |
+|------------|------------|
+| <img src=".erb/img/demo1.png" /> | <img src=".erb/img/demo2.png" /> |
+| <img src=".erb/img/demo3.png" /> | <img src=".erb/img/demo4.png" /> |
+
+<hr />
 
 <br>
 
@@ -7,6 +13,7 @@
 </p>
 
 <br>
+
 
 <div align="center">
 
@@ -20,19 +27,62 @@
 
 </div>
 
-## Install
+## 1. Features
 
-Clone the repo and install dependencies:
+    🔥 Light/Dark themes  
+    🎯 Multi-language switching  
+    🧩 Login authentication, Jump between multiple pages  
+    🎨 Persistent login status and language  
+    🌟 Use the latest third-party libraries
+    🌀 Coding in class component mode, hate hook functions in function components
+    🎁 Works out of the box  
+
+
+
+## 2. Development environment:
+
+1. `node` v22.14.0
+2. **only** install via `npm`, no `yarn` etc.
+3. Important dependencies:
+
+    ```json
+    "dependencies": {
+        "@reduxjs/toolkit": "^2.6.1",
+        "electron-debug": "^4.1.0",
+        "electron-log": "^5.3.2",
+        "electron-updater": "^6.3.9",
+        "i18next": "^24.2.3",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-i18next": "^15.4.1",
+        "react-redux": "^9.2.0",
+        "react-router-dom": "^7.3.0"
+      },
+      "devDependencies": {
+        "electron": "^35.0.2",
+        "electron-builder": "^25.1.8",
+        "electron-devtools-installer": "^4.0.0",
+        "electronmon": "^2.0.3",
+        "sass-loader": "^16.0.5",
+        "style-loader": "^4.0.0",
+        "typescript": "^5.8.2",
+        "webpack": "^5.98.0",
+      },
+    ```
+
+## 3. Install
+
+Clone the repo and install dependencies with `npm`:
 
 ```bash
-git clone --depth 1 --branch main https://github.com/electron-react-boilerplate/electron-react-boilerplate.git your-project-name
+git clone --depth 1 --branch main https://github.com/12343954/electron-react-boilerplate your-project-name
 cd your-project-name
 npm install
 ```
 
 **Having issues installing? See our [debugging guide](https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues/400)**
 
-## Starting Development
+## 4. Starting Development
 
 Start the app in the `dev` environment:
 
@@ -40,7 +90,7 @@ Start the app in the `dev` environment:
 npm start
 ```
 
-## Packaging for Production
+## 5. Packaging for Production
 
 To package apps for the local platform:
 
@@ -48,21 +98,21 @@ To package apps for the local platform:
 npm run package
 ```
 
-## Docs
+## 6. Docs
 
 See our [docs and guides here](https://electron-react-boilerplate.js.org/docs/installation)
 
-## Community
+## 7. Community
 
 Join our Discord: https://discord.gg/Fjy3vfgy5q
 
-## Sponsors
+## 8. Sponsors
 
 <a href="https://palette.dev">
   <img src=".erb/img/palette-sponsor-banner.svg" width="100%" />
 </a>
 
-## Donations
+## 9. Donations
 
 **Donations will ensure the following:**
 
@@ -70,7 +120,7 @@ Join our Discord: https://discord.gg/Fjy3vfgy5q
 - 🛣 Progress on the [roadmap](https://electron-react-boilerplate.js.org/docs/roadmap)
 - 🐛 Quick responses to bug reports and help requests
 
-## Backers
+## 10. Backers
 
 Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/electron-react-boilerplate-594#backer)]
 

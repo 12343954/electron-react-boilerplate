@@ -12,8 +12,11 @@ import path from 'path';
 import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
+import i18n from 'i18next';
+
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import { IPC } from './constants';
 
 class AppUpdater {
   constructor() {
@@ -24,12 +27,9 @@ class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+let currentLanguage: 'en' | 'zh' = 'en';// 主进程 i18n 初始化（默认英文）
 
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
-});
+
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -72,7 +72,9 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728,
+    height: 800,
+    minWidth: 800,
+    minHeight: 800,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       preload: app.isPackaged
@@ -106,6 +108,47 @@ const createWindow = async () => {
     shell.openExternal(edata.url);
     return { action: 'deny' };
   });
+
+  ipcMain.on(IPC.Channel, async (event, arg) => {
+    const msgTemplate = (arg:any) => `IPC test: ${JSON.stringify(arg)}`;
+
+    //arg: { action: string, value: any }
+    const {action,value} = arg;
+    switch (action) {
+      case IPC.Action.pingPong:
+        console.log(msgTemplate(arg));
+        event.reply(IPC.Channel, msgTemplate('pong'));
+        break;
+      case IPC.Action.language.init:
+      case IPC.Action.language.change:
+        currentLanguage = value;
+        i18n.changeLanguage(value).then(() => {
+          menuBuilder.buildMenu();
+          console.log(`Main process language ${action==IPC.Action.language.init?'initialized':'changed'} to: ${value}`);
+        });
+        break;
+
+      default:
+        break;
+    }
+
+  });
+
+  // ipcMain.on('init-language', (event, lang: 'en' | 'zh') => {
+  //   currentLanguage = lang;
+  //   i18n.changeLanguage(lang).then(() => {
+  //     menuBuilder.buildMenu();
+  //     console.log('Main process language initialized to:', lang);
+  //   });
+  // });
+
+  // ipcMain.on('language-changed', (event, newLang: 'en' | 'zh') => {
+  //   currentLanguage = newLang;
+  //   i18n.changeLanguage(newLang).then(() => {
+  //     menuBuilder.buildMenu();
+  //     console.log('Main process language changed to:', newLang);
+  //   });
+  // });
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line

@@ -6,10 +6,30 @@ import {
   MenuItemConstructorOptions,
 } from 'electron';
 
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next'; // 仅用于类型支持，主进程不依赖 React
+import enTranslation from '../locales/en.json';
+import zhTranslation from '../locales/zh.json';
+
 interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
   selector?: string;
   submenu?: DarwinMenuItemConstructorOptions[] | Menu;
 }
+
+const defaultLanguage: 'en' | 'zh' = 'en';
+i18n
+  .use(initReactI18next) // 仅为类型兼容，实际不依赖 React
+  .init({
+    resources: {
+      en: { translation: enTranslation },
+      zh: { translation: zhTranslation }
+    },
+    lng: defaultLanguage,
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false
+    }
+  });
 
 export default class MenuBuilder {
   mainWindow: BrowserWindow;
@@ -195,14 +215,14 @@ export default class MenuBuilder {
   buildDefaultTemplate() {
     const templateDefault = [
       {
-        label: '&File',
+        label: i18n.t('menu.file.label'), // '&File',
         submenu: [
           {
-            label: '&Open',
+            label: i18n.t('menu.file.open'), // '&Open',
             accelerator: 'Ctrl+O',
           },
           {
-            label: '&Close',
+            label: i18n.t('menu.file.close'), // '&Close',
             accelerator: 'Ctrl+W',
             click: () => {
               this.mainWindow.close();
@@ -211,20 +231,20 @@ export default class MenuBuilder {
         ],
       },
       {
-        label: '&View',
+        label: i18n.t('menu.view.label'), // '&View',
         submenu:
           process.env.NODE_ENV === 'development' ||
           process.env.DEBUG_PROD === 'true'
             ? [
                 {
-                  label: '&Reload',
+                  label: i18n.t('menu.view.reload'), // '&Reload',
                   accelerator: 'Ctrl+R',
                   click: () => {
                     this.mainWindow.webContents.reload();
                   },
                 },
                 {
-                  label: 'Toggle &Full Screen',
+                  label: i18n.t('menu.view.toggleFullScreen'), // 'Toggle &Full Screen',
                   accelerator: 'F11',
                   click: () => {
                     this.mainWindow.setFullScreen(
@@ -233,7 +253,7 @@ export default class MenuBuilder {
                   },
                 },
                 {
-                  label: 'Toggle &Developer Tools',
+                  label: i18n.t('menu.view.toggleDevTool'), // 'Toggle &Developer Tools',
                   accelerator: 'Alt+Ctrl+I',
                   click: () => {
                     this.mainWindow.webContents.toggleDevTools();
@@ -242,7 +262,7 @@ export default class MenuBuilder {
               ]
             : [
                 {
-                  label: 'Toggle &Full Screen',
+                  label: i18n.t('menu.view.toggleFullScreen'), // 'Toggle &Full Screen',
                   accelerator: 'F11',
                   click: () => {
                     this.mainWindow.setFullScreen(
@@ -253,16 +273,16 @@ export default class MenuBuilder {
               ],
       },
       {
-        label: 'Help',
+        label: i18n.t('menu.help.label'), // 'Help',
         submenu: [
           {
-            label: 'Learn More',
+            label: i18n.t('menu.help.learnMore'), // 'Learn More',
             click() {
               shell.openExternal('https://electronjs.org');
             },
           },
           {
-            label: 'Documentation',
+            label: i18n.t('menu.help.documentation'), // 'Documentation',
             click() {
               shell.openExternal(
                 'https://github.com/electron/electron/tree/main/docs#readme',
@@ -270,13 +290,13 @@ export default class MenuBuilder {
             },
           },
           {
-            label: 'Community Discussions',
+            label: i18n.t('menu.help.communityDiscussions'), // 'Community Discussions',
             click() {
               shell.openExternal('https://www.electronjs.org/community');
             },
           },
           {
-            label: 'Search Issues',
+            label: i18n.t('menu.help.searchIssues'), // 'Search Issues',
             click() {
               shell.openExternal('https://github.com/electron/electron/issues');
             },
