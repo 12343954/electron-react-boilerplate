@@ -15,6 +15,15 @@
     "donate": "捐赠"
   },
   "menu": {
+    "macOS": {
+      "label": "Electron",
+      "about": "关于 ElectronReact",
+      "services": "服务",
+      "hide": "隐藏 ElectronReact",
+      "hideOthers": "隐藏其他程序",
+      "showAll": "显示全部",
+      "quit": "退出"
+    },
     "file": {
       "label": "文件",
       "open": "打开",
@@ -24,8 +33,11 @@
     "edit": {
       "label": "编辑",
       "undo": "撤销",
+      "redo": "重做",
       "copy": "复制",
-      "paste": "粘贴"
+      "paste": "粘贴",
+      "cut": "剪切",
+      "selectAll": "选择全部"
     },
     "view": {
       "label": "视图",
@@ -39,6 +51,11 @@
       "documentation": "在线文档",
       "communityDiscussions": "社区讨论",
       "searchIssues": "查找问题帮助"
+    },
+    "window": {
+      "label": "窗口",
+      "minimize": "最小化",
+      "bringAllToFront": "前端显示"
     }
   }
 }

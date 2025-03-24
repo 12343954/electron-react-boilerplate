@@ -15,6 +15,15 @@
     "donate": "Donate"
   },
   "menu": {
+    "macOS": {
+      "label": "Electron",
+      "about": "About ElectronReact",
+      "services": "Services",
+      "hide": "Hide ElectronReact",
+      "hideOthers": "Hide Others",
+      "showAll": "Show All",
+      "quit": "Quit"
+    },
     "file": {
       "label": "&File",
       "open": "&Open",
@@ -24,8 +33,11 @@
     "edit": {
       "label": "&Edit",
       "undo": "Undo",
+      "redo": "Redo",
       "copy": "Copy",
-      "paste": "Paste"
+      "paste": "Paste",
+      "cut": "Cut",
+      "selectAll": "Select All"
     },
     "view": {
       "label": "&View",
@@ -39,6 +51,11 @@
       "documentation": "Documentation",
       "communityDiscussions": "Community Discussions",
       "searchIssues": "Search Issues"
+    },
+    "window": {
+      "label": "Help",
+      "minimize": "Minimize",
+      "bringAllToFront": "Bring All to Front"
     }
   }
 }
